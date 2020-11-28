@@ -36,7 +36,7 @@ This is a Laravel Application that uses Cloud Pub/Sub to publish messages:
     $ php artisan key:generate
     ```
 
-6. Add the following variable in your .env file. The value should be the path of the JSON key file used for authentication.
+6. Add the following variable to your .env file. The value should be the path of the JSON key file used for authentication.
     ```
     GOOGLE_APPLICATION_CREDENTIALS=app/sandbox-cloud-pub-sub.json
     ```
