@@ -47,6 +47,11 @@ This is a Laravel Application that uses Cloud Pub/Sub to publish messages:
     ```
     php artisan serve
     ```
-8. To publish the message to the topic, send a POST request to `http://127.0.0.1:8000/api/publish`
-
-9. To pull the message, send a POST request to `http://127.0.0.1:8000/api/pull`
+8. To publish the message to the topic, send a POST request to the following endpoint.
+    ```
+    http://127.0.0.1:8000/api/publish
+    ```
+9. To pull the message to the topic, send a POST request to the following endpoint.
+    ```
+    http://127.0.0.1:8000/api/pull
+    ```
