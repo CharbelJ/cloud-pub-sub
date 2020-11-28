@@ -11,7 +11,7 @@ This is a Laravel Application that uses Cloud Pub/Sub to publish messages:
 
 #### Setup:
 
-1. Open a new instance of the terminal, navigate to the root directory of the project.
+1. Open a new instance of the terminal and navigate to the root directory of the project.
     ```
     $ cd cloud-pub-sub
     ```
