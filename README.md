@@ -45,7 +45,7 @@ This is a Laravel Application that uses Cloud Pub/Sub to publish and pull messag
 
 7. To run your Laravel Application
     ```
-    php artisan serve
+    $ php artisan serve
     ```
 8. To publish the message to the topic, send a POST request to the following endpoint.
     ```
