@@ -1,6 +1,6 @@
 ## Description
 
-This is a Laravel Application that uses Cloud Pub/Sub to publish messages:
+This is a Laravel Application that uses Cloud Pub/Sub to publish and pull messages:
 
 ## Getting started
 
@@ -51,7 +51,7 @@ This is a Laravel Application that uses Cloud Pub/Sub to publish messages:
     ```
     http://127.0.0.1:8000/api/publish
     ```
-9. To pull the message to the topic, send a POST request to the following endpoint.
+9. To pull the stored message, send a POST request to the following endpoint.
     ```
     http://127.0.0.1:8000/api/pull
     ```
