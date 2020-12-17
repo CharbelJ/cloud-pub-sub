@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Google\Cloud\PubSub\PubSubClient;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(PubSubClient::class, function () {
+            return new PubSubClient([
+                'keyFile' => json_decode(file_get_contents(env('GOOGLE_APPLICATION_CREDENTIALS')), true)
+            ]);
+        });
     }
 
     /**
