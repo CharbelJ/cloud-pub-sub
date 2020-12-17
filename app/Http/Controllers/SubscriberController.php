@@ -7,6 +7,21 @@ use Google\Cloud\PubSub\PubSubClient;
 class SubscriberController extends Controller
 {
     /**
+     * @var PubSubClient
+     */
+    protected $pubSubClient;
+
+    /**
+     * SubscriberController constructor.
+     *
+     * @param PubSubClient $pubSubClient
+     */
+    public function __construct(PubSubClient $pubSubClient)
+    {
+        $this->pubSubClient = $pubSubClient;
+    }
+
+    /**
      * POST /pull
      * Pull and acknowledge the messages that were sent to the topic
      *
@@ -14,11 +29,7 @@ class SubscriberController extends Controller
      */
     public function pull()
     {
-        $pubSubClient = new PubSubClient([
-            'keyFile' => json_decode(file_get_contents(storage_path(env('GOOGLE_APPLICATION_CREDENTIALS'))), true)
-        ]);
-
-        $subscription = $pubSubClient->subscription('subscription-test');
+        $subscription = $this->pubSubClient->subscription('subscription-test');
 
         $messages = $subscription->pull();
 
