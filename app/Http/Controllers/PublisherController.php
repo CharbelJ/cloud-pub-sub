@@ -7,6 +7,21 @@ use Google\Cloud\PubSub\PubSubClient;
 class PublisherController extends Controller
 {
     /**
+     * @var PubSubClient
+     */
+    protected $pubSubClient;
+
+    /**
+     * PublisherController constructor.
+     *
+     * @param PubSubClient $pubSubClient
+     */
+    public function __construct(PubSubClient $pubSubClient)
+    {
+        $this->pubSubClient = $pubSubClient;
+    }
+
+    /**
      * POST /publish
      * Send a message to the topic
      *
@@ -14,18 +29,13 @@ class PublisherController extends Controller
      */
     public function publish()
     {
-        $pubSubClient = new PubSubClient([
-            'keyFile' => json_decode(file_get_contents(storage_path(env('GOOGLE_APPLICATION_CREDENTIALS'))), true)
-        ]);
-
-        $topic = $pubSubClient->topic('topic-test');
-
-        $topic->publish([
-            'data' => 'This is the first message sent to the topic',
-            'attributes' => [
-                'location' => 'Sydney'
-            ]
-        ]);
+        $this->pubSubClient->topic('topic-test')
+            ->publish([
+                'data' => 'This is the first message sent to the topic',
+                'attributes' => [
+                    'location' => 'Sydney'
+                ]
+            ]);
 
         return response()->json('Success', 200);
     }
